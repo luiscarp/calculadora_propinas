@@ -25,7 +25,7 @@ function App() {
           </div>
         </div>
         <div className=" border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
-          {order.length === 0 ? (
+          {order.length > 0 ? (
             <>
               <OrderContents
                 order={order}
