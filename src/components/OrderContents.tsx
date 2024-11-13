@@ -1,20 +1,21 @@
 import { formatCurrency } from "../helpers";
+import { OrderState } from "../reducers/order-reducer";
 import { MenuItem, OrderItem } from "../types";
 
 type orderContentsProps = {
-  order: OrderItem[];
+  state: OrderState
   removeItem: (item: MenuItem["id"]) => void;
 };
 
 export default function OrderContents({
-  order,
+  state,
   removeItem,
 }: orderContentsProps) {
   return (
     <div>
       <h2 className=" font-black text-4xl">Consumo</h2>
       <div className=" space-y-3 mt-3">
-        {order.map((item) => (
+        {state.order.map((item) => (
           <div
             className=" flex justify-between items-center border-t border-gray-200 py-5 last-of-type:border-b"
             key={item.id}
