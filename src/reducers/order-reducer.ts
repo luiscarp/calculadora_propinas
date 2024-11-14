@@ -4,7 +4,7 @@ export type OrderActions =
 {type: "add-item", payload: {item : MenuItem}} |
 {type: "remove-item", payload: {id : MenuItem["id"]}} |
 {type: "place-order"} |
-{type: "add-tipe", payload:{ value : number}}
+{type: "add-tip", payload:{ value : number}}
 
 export type OrderState = {
     order: OrderItem[],
@@ -63,10 +63,13 @@ export const orderReducer = (
         }
     }
 
-    if (action.type === "add-tipe") {
+    if (action.type === "add-tip") {
+
+        const tip = action.payload.value
 
         return {
-            ...state
+            ...state,
+            tip
         }
     }
 

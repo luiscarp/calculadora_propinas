@@ -1,5 +1,5 @@
 import { useState } from "react";
-import type { OrderItem, MenuItem } from "../types";
+import type { OrderItem } from "../types";
 
 export default function useOrder() {
   const [order, setOrder] = useState<OrderItem[]>([]);
@@ -7,10 +7,6 @@ export default function useOrder() {
   const [tip, setTip] = useState(0)
 
 
-
-  const removeItem = ( id : MenuItem["id"]) => {
-    setOrder( order.filter( item => item.id !== id))
-  }
 
   const placeOrder = () => {
     setOrder([])
@@ -20,7 +16,7 @@ export default function useOrder() {
   return {
     
     order,
-    removeItem,
+
     tip,
     setTip,
     placeOrder

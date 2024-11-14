@@ -8,9 +8,9 @@ import { useReducer } from "react";
 import { initialState, orderReducer } from "./reducers/order-reducer";
 
 function App() {
-  const { tip, setTip, placeOrder } = useOrder();
+  const {  tip, placeOrder } = useOrder();
 
-  const [state, dispatch] = useReducer(orderReducer, initialState);
+  const [state, dispatch] = useReducer(orderReducer, initialState)
 
   return (
     <>
@@ -25,22 +25,21 @@ function App() {
           <h2 className=" text-4xl font-black">Menu</h2>
           <div className=" space-y-3 mt-3">
             {menuItems.map((item) => (
-              <MenuItem
-                key={item.id}
-                item={item}
-                dispatch={dispatch}
-              ></MenuItem>
+              <MenuItem key={item.id} item={item} dispatch ={dispatch}></MenuItem>
             ))}
           </div>
         </div>
         <div className=" border border-dashed border-slate-300 p-5 rounded-lg space-y-10">
           {state.order.length > 0 ? (
             <>
-              <OrderContents state={state} dispatch={dispatch}></OrderContents>
-              <TipPercentageForm setTip={setTip} tip={tip}></TipPercentageForm>
+              <OrderContents
+                state={state}
+                dispatch = {dispatch}
+              ></OrderContents>
+              <TipPercentageForm dispatch={dispatch} tip={state.tip}></TipPercentageForm>
               <OrderTotals
                 order={state.order}
-                tip={tip}
+                tip={state.tip}
                 placeOrder={placeOrder}
               ></OrderTotals>
             </>
